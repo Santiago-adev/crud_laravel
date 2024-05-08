@@ -14,8 +14,6 @@ use App\Http\Controllers\TaskController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', '/tasks');
 
 Route::resource('task', TaskController::class);

@@ -31,17 +31,17 @@ class TaskController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        {
-            $request->validate([
-                'title' => 'required',
-                'description' => 'required'
-            ]);
+        $request->validate([
+        'title' => 'required',
+        'description' => 'required',
+        'due_date' => 'required',
+        'status' => 'required',
+    ]);
     
             Task::create($request->all());
             return redirect()->route('task.index')->with('success','Nueva tarea creada exitosamente');
-        }
     }
-
+    
     /**
      * Display the specified resource.
      */
@@ -66,7 +66,9 @@ class TaskController extends Controller
         // validacion
         $request->validate([
             'title' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'due_date' => 'required',
+            'status' => 'required',
         ]);
 
         $task->update($request->all());
